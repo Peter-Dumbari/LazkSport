@@ -1,0 +1,35 @@
+.carousel-inner, .carousel-item{
+  height: 70vh;
+}
+
+Footer{
+  padding: 100%;
+}
+
+.row{
+  padding: 4%;
+}
+
+.card-body{
+  color: #fff;
+}
+
+.card-footer{
+  background-color: #fff;
+}
+
+.fs-7{
+  text-align: justify;
+}
+
+.fa-facebook, .fa-twitter-square, .fa-google, .fa-linkedin{
+  color: black;
+  font-size: 100%;
+  margin-right: 10%;
+}
+
+
+
+p{
+  color: #fff;
+}
