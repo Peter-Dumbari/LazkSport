@@ -21,7 +21,8 @@ export default function HomePage() {
         />
         <Carousel.Caption>
           <h1>...For research and backup</h1>
-          <p>Is openned for all type of inquiry concerning Sports.</p>
+          <h4>Is openned for all type of inquiry concerning Sports.</h4>
+          <button type="button" className="btn btn-outline-danger btn-lg">GET STARTED</button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -33,7 +34,8 @@ export default function HomePage() {
 
         <Carousel.Caption>
           <h1>..Entertainment and Refreshment</h1>
-          <p>free livescores and other sport updates.</p>
+          <h4>free livescores and other sport updates.</h4>
+          <button type="button" className="btn btn-outline-danger btn-lg">GET STARTED</button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -45,9 +47,10 @@ export default function HomePage() {
 
         <Carousel.Caption>
           <h1>...LazkSport for all, both young and aged</h1>
-          <p>
+          <h4>
            Internet freedom is our goal.
-          </p>
+          </h4>
+          <button type="button" className="btn btn-outline-danger btn-lg">GET STARTED</button>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
