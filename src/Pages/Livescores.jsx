@@ -3,6 +3,7 @@ import godest from "../images/RunningMessi.png";
 import axios from "axios";
 import Footer from "../Components/Footer";
 import Pagination from "../Components/Pagination";
+import Premier from '../images/PremierLeague.png'
 
 export default function Livescores() {
   const [leagues, setLeagues] = useState([]);
@@ -48,6 +49,10 @@ export default function Livescores() {
                 color: "#fff",
               }}
             >
+              <div className="container-fluid">
+                <img src={Premier} alt=""  width='100px' />
+                <h4>Premier League Livescores</h4>
+              </div>
               {items.map((datas, index)=>
                <div
                className="row align-items-start"

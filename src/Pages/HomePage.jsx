@@ -22,7 +22,7 @@ export default function HomePage() {
         <Carousel.Caption>
           <h1>...For research and backup</h1>
           <h4>Is openned for all type of inquiry concerning Sports.</h4>
-          <button type="button" className="btn btn-outline-danger btn-lg">GET STARTED</button>
+          <button type="button" className="btn btn-outline-danger btn-lg" >GET STARTED</button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>

@@ -43,3 +43,46 @@ h1{
   font-size: 300%;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.openingNote{
+  text-shadow: 2px 2px 5px rgb(3, 1, 110);
+  
+}
+
+.header_Note{
+  text-shadow: 2px 2px 5px #000;
+  text-align: center;
+  margin-bottom: 10%;
+
+}
+.swal-footer {
+  background-color: rgb(245, 248, 250);
+  margin-top: 32px;
+  border-top: 1px solid #E9EEF1;
+  overflow: hidden;
+}
+/* light buttons style */
+
+/* .btn-primary {
+  font-size: 16px;
+  position: relative;
+  top: 20%;
+  background: #fcffdc;
+  color: #de204f;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color .4s;
+}
+
+.btn-primary:hover {
+  color: white;
+  background: gray;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(250, 0, 20, 0.4);
+} */
