@@ -1,137 +1,180 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import { collection, addDoc } from "firebase/firestore";
-import {db} from '../firebase-configuration'
- import { signup, useAuth, logout, login  } from "../firebase-configuration";
- import { useHistory } from 'react-router-dom'
- import Loader from "../Loaders/Loader";
- import Image from '../images/global.png'
- import Footer from "./Footer";
- 
+import { db } from "../firebase-configuration";
+import { signup, useAuth, logout, login } from "../firebase-configuration";
+import { useHistory } from "react-router-dom";
+import Loader from "../Loaders/Loader";
+import Image from "../images/global.png";
+import Footer from "./Footer";
+import HandleModal from '../Components/HandleModal'
+import { Link } from "react-router-dom";
 
 
 
- 
+
+
 
 export default function SubscriptionPage() {
-  const history = useHistory() 
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const currentUser = useAuth();
   const emailRef = useRef();
   const passwordRef = useRef();
 
+  const usersCollectionRef = collection(db, "Users");
 
-  const usersCollectionRef = collection(db, "Users")
- 
   // const HandleLogout = () =>{
   //   try{
   //     logout()
   //   }catch{
   //     alert('error oh')
   //   }
-useEffect(()=>{
-  window.addEventListener('offline', function(e) {
-    swal('No internet, check connection and try again!'); });
-})
-  
- 
-    window.addEventListener('online', function(e) { console.log('online');
+  useEffect(() => {
+    window.addEventListener("offline", function (e) {
+      swal("No internet, check connection and try again!");
     });
-
-
-
-  const HandleLogin = async() =>{
-    setIsLoading(true)  
-    
-  await login(emailRef.current.value, passwordRef.current.value)
-  .then((res) => {
-    if(res.operationType === 'signIn'){
-
-      history.push('/home')
-    }
-    console.log(res)
-    setIsLoading(false)
-  })
-  .catch((FirebaseError) => {
-    alert(FirebaseError)
-    setIsLoading(false)
   });
-  }
+
+  window.addEventListener("online", function (e) {
+    console.log("online");
+  });
+
 
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(false)
+    setIsLoading(false);
 
-   await signup(emailRef.current.value, passwordRef.current.value)
+    await signup(emailRef.current.value, passwordRef.current.value)
       .then((res) => {
         console.log(res);
-        if (res  .statusText === "OK") {
+        if (res.statusText === "OK") {
           swal("Thanks for subscribing!", {
             buttons: false,
             timer: 3000,
           });
-          setIsLoading(true)
+          if (res.operationType === "signIn") {
+            history.push("/home");
+          }
+          setIsLoading(true);
         }
       })
-      .catch((error) => {
-        console.warn(error);
+      .catch((FirebaseError) => {
+        alert(FirebaseError);
       });
   };
 
   return (
-   <>
-    <body className="bg-light">
-      
-    <div className="container ">
-      <div className="row">
-        <div  className="col-12 col-md-7">
-          <img src={Image} alt="" width="100%"/>
-          <div style={{color: '#fff'}}>
-          <h3 style={{fontFamily: 'sans-serif'}} className="openingNote">Welcome to LAZKSPORT Entertainment </h3>
-          </div>
-
-        </div>
-          <div className="col-10 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded">
-          <h4 className="header_Note">SignUp to continue</h4>
-          <form class="was-validated" onSubmit={HandleSubmit}>
-            <div class="mb-3 align-text-Center">
-              <input
-                type="email"
-                className="form-control"
-                id="validationTextarea"
-                placeholder="Enter Your Email"
-                ref={emailRef}
-                required
-              />
-              <div className="invalid-feedback">
-                Please enter your Email correctly.
+    <>
+      <body className="bg-light">
+        <div className="container ">
+          <div className="row">
+            <div className="col-12 col-md-7">
+              <img src={Image} alt="" width="100%" />
+              <div style={{ color: "#fff" }}>
+                <h3
+                  style={{ fontFamily: "sans-serif" }}
+                  className="openingNote"
+                >
+                  Welcome to LAZKSPORT Entertainment{" "}
+                </h3>
               </div>
-              <br />
-              <input
-                type="password"
-                className="form-control"
-                id="validationTextarea"
-                placeholder="Enter Your Password"
-                ref={passwordRef}
-                required
-              />
-              <div className="invalid-feedback">Your Password is required.</div>
             </div>
+            <div className="col-10 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded">
+              <h4 className="header_Note">Create a user account to continue</h4>
+              <form className="was-validated" onSubmit={HandleSubmit}>
+                <div className="mb-3 align-text-Center">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="validationTextarea"
+                    placeholder="Enter Your Email"
+                    ref={emailRef}
+                    required
+                  />
+                  <div className="invalid-feedback">
+                    Please enter your Email correctly.
+                  </div>
+                  <br />
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="validationTextarea"
+                    placeholder="Enter Your Password"
+                    ref={passwordRef}
+                    required
+                    minLength="6"
+                    maxLength="20"
+                  />
+                  <div className="invalid-feedback">
+                    Your Password is required.
+                  </div>
+                </div>
 
-            <br />
-            <button disabled={isLoading || currentUser} className="btn btn-danger">Subscribe</button>
-            {isLoading && <Loader/>}
-          </form>
+                <br />
+                <center>
+                  {" "}
+                  <button
+                    disabled={isLoading || currentUser}
+                    className="btn btn-danger"
+                  >
+                    Create account
+                  </button>
+                </center>
+                {isLoading && <Loader />}
+              </form>
 
-          {/* <button disabled={isLoading || !currentUser} className="btn btn-warning" onClick={HandleLogout}>Logout</button> */}
-            <button disabled={isLoading || currentUser} className="btn btn-secondary" onClick={HandleLogin}>Login</button>
+              <div className="or_line">
+                <hr className="line" />
+                <p
+                  className="hr_p"
+                  style={{ color: "#000", fontFamily: "serif" }}
+                >
+                  OR
+                </p>
+                <hr className="line" />
+              </div>
+              <div className="row">
+                <div className="col">
+                  <Link to="">
+                    <i className="fa-brands fa-facebook"></i>
+                  </Link>
+                  <Link to="">
+                    <i
+                      className="fa-brands fa-twitter-square"
+                      style={{
+                        color: "black",
+                        fontSize: "100%",
+                        marginRight: "10%",
+                      }}
+                    ></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fa-brands fa-google"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fa-brands fa-linkedin"></i>
+                  </Link>
+                </div>
+              </div>
+              {/* <button disabled={isLoading || !currentUser} className="btn btn-warning" onClick={HandleLogout}>Logout</button> */}
+              {/* <button
+                disabled={isLoading || currentUser}
+                className="btn btn-secondary"
+                onClick={HandleLogin}
+              >
+                Login
+              </button> */}
+              <HandleModal/>
+            </div>
+          </div>
         </div>
-        </div>
-      </div>
-    </body>
-   <Footer/>
-   </>
+      </body>
+      <Footer />
+    </>
+  );
+}
 
-  )};
+
