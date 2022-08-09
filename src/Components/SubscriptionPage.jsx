@@ -31,17 +31,32 @@ export default function SubscriptionPage() {
   //   }catch{
   //     alert('error oh')
   //   }
-  useEffect(() => {
-    window.addEventListener("offline", function (e) {
-      swal("No internet, check connection and try again!");
-    });
-  });
+  // useEffect(() => {
+  //   window.addEventListener("offline", function (e) {
+  //     swal("No internet, check connection and try again!");
+  //   });
+  // });
 
-  window.addEventListener("online", function (e) {
-    console.log("online");
-  });
+  // window.addEventListener("online", function (e) {
+  //   console.log("online");
+  // });
 
+  const HandleLogin = async () => {
+    setIsLoading(true);
 
+    await login(emailRef.current.value, passwordRef.current.value)
+      .then((res) => {
+        if (res.operationType === "signIn") {
+          history.push("/home");
+        }
+        console.log(res);
+        setIsLoading(false);
+      })
+      .catch((FirebaseError) => {
+        alert(FirebaseError);
+        setIsLoading(false);
+      });
+  };
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -136,7 +151,29 @@ export default function SubscriptionPage() {
                 </p>
                 <hr className="line" />
               </div>
-              
+              <div className="row">
+                <div className="col">
+                  <Link to="">
+                    <i className="fa-brands fa-facebook"></i>
+                  </Link>
+                  <Link to="">
+                    <i
+                      className="fa-brands fa-twitter-square"
+                      style={{
+                        color: "black",
+                        fontSize: "100%",
+                        marginRight: "10%",
+                      }}
+                    ></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fa-brands fa-google"></i>
+                  </Link>
+                  <Link to="">
+                    <i className="fa-brands fa-linkedin"></i>
+                  </Link>
+                </div>
+              </div>
               {/* <button disabled={isLoading || !currentUser} className="btn btn-warning" onClick={HandleLogout}>Logout</button> */}
               {/* <button
                 disabled={isLoading || currentUser}
