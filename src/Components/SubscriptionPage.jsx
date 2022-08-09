@@ -31,15 +31,15 @@ export default function SubscriptionPage() {
   //   }catch{
   //     alert('error oh')
   //   }
-  // useEffect(() => {
-  //   window.addEventListener("offline", function (e) {
-  //     swal("No internet, check connection and try again!");
-  //   });
-  // });
+  useEffect(() => {
+    window.addEventListener("offline", function (e) {
+      swal("No internet, check connection and try again!");
+    });
+  });
 
-  // window.addEventListener("online", function (e) {
-  //   console.log("online");
-  // });
+  window.addEventListener("online", function (e) {
+    console.log("online");
+  });
 
   const HandleLogin = async () => {
     setIsLoading(true);

@@ -50,7 +50,6 @@ export default function NavbarPage() {
               </Nav.Link>
               <Nav.Link>
                 <Link
-                  to="/livescores"
                   style={{
                     textDecoration: "none",
                     color: "rgba(255,255,255,.55)",
