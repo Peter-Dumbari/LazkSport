@@ -46,7 +46,7 @@ function HandleModal() {
         <div class="row">
         <div class="col-md-8 offset-md-2">
             
-        <form className="was-validated">
+        <form className="was-validated" onSubmit={HandleLogin}>
                 <div className="mb-3 align-text-Center">
                   <input
                     type="email"

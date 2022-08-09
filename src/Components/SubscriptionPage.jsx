@@ -136,29 +136,7 @@ export default function SubscriptionPage() {
                 </p>
                 <hr className="line" />
               </div>
-              <div className="row">
-                <div className="col">
-                  <Link to="">
-                    <i className="fa-brands fa-facebook"></i>
-                  </Link>
-                  <Link to="">
-                    <i
-                      className="fa-brands fa-twitter-square"
-                      style={{
-                        color: "black",
-                        fontSize: "100%",
-                        marginRight: "10%",
-                      }}
-                    ></i>
-                  </Link>
-                  <Link to="">
-                    <i className="fa-brands fa-google"></i>
-                  </Link>
-                  <Link to="">
-                    <i className="fa-brands fa-linkedin"></i>
-                  </Link>
-                </div>
-              </div>
+              
               {/* <button disabled={isLoading || !currentUser} className="btn btn-warning" onClick={HandleLogout}>Logout</button> */}
               {/* <button
                 disabled={isLoading || currentUser}
