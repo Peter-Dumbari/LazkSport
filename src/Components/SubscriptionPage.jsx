@@ -145,7 +145,7 @@ export default function SubscriptionPage() {
               >
                 Login
               </button> */}
-              <HandleModal/>
+              {/* <HandleModal/> */}
             </div>
           </div>
         </div>
