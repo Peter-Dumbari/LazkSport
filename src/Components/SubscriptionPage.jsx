@@ -10,7 +10,6 @@ import Image from "../images/global.png";
 import Footer from "./Footer";
 import HandleModal from '../Components/HandleModal'
 import { Link } from "react-router-dom";
-import OpeningNav from '../Components/OpeningNav'
 
 
 
@@ -67,7 +66,6 @@ export default function SubscriptionPage() {
 
   return (
     <>
-    <OpeningNav/>
       <body className="bg-light">
         <div className="container ">
           <div className="row">
