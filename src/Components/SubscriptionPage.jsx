@@ -10,6 +10,7 @@ import Image from "../images/global.png";
 import Footer from "./Footer";
 import HandleModal from '../Components/HandleModal'
 import { Link } from "react-router-dom";
+import OpeningNav from '../Components/OpeningNav'
 
 
 
@@ -66,6 +67,7 @@ export default function SubscriptionPage() {
 
   return (
     <>
+    <OpeningNav/>
       <body className="bg-light">
         <div className="container ">
           <div className="row">
@@ -157,14 +159,6 @@ export default function SubscriptionPage() {
                   </Link>
                 </div>
               </div>
-              {/* <button disabled={isLoading || !currentUser} className="btn btn-warning" onClick={HandleLogout}>Logout</button> */}
-              {/* <button
-                disabled={isLoading || currentUser}
-                className="btn btn-secondary"
-                onClick={HandleLogin}
-              >
-                Login
-              </button> */}
               <HandleModal/>
             </div>
           </div>
