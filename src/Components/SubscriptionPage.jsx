@@ -41,23 +41,6 @@ export default function SubscriptionPage() {
     console.log("online");
   });
 
-  const HandleLogin = async () => {
-    setIsLoading(true);
-
-    await login(emailRef.current.value, passwordRef.current.value)
-      .then((res) => {
-        if (res.operationType === "signIn") {
-          history.push("/home");
-        }
-        console.log(res);
-        setIsLoading(false);
-      })
-      .catch((FirebaseError) => {
-        alert(FirebaseError);
-        setIsLoading(false);
-      });
-  };
-
   const HandleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(false);
@@ -99,7 +82,7 @@ export default function SubscriptionPage() {
             </div>
             <div className="col-10 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded">
               <h4 className="header_Note">Create a user account to continue</h4>
-              <form className="was-validated" onSubmit={HandleSubmit}>
+              <form className="was-validated">
                 <div className="mb-3 align-text-Center">
                   <input
                     type="email"
