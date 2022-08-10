@@ -80,7 +80,7 @@ export default function SubscriptionPage() {
                 </h3>
               </div>
             </div>
-            <div className="col-10 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded">
+            <div className="col-12 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded">
               <h4 className="header_Note">Create a user account to continue</h4>
               <form className="was-validated">
                 <div className="mb-3 align-text-Center">

@@ -37,7 +37,7 @@ function HandleModal() {
         <p onClick={handleShow} className="login">Already a User? Login</p>
       
 
-      <Modal show={show} onHide={handleClose}  dialogClassName="modal-90w"
+      <Modal show={show} onHide={handleClose}
 aria-labelledby="contained-modal-title-vcenter"centered>
         <Modal.Header closeButton>
           <Modal.Title>Sign In your Credentials</Modal.Title>
