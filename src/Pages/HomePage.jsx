@@ -20,8 +20,8 @@ export default function HomePage() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h1>...For research and backup</h1>
-          <h4>Is openned for all type of inquiry concerning Sports.</h4>
+          <h2>...For research and backup</h2>
+          <h5>Is openned for all type of inquiry concerning Sports.</h5>
           <button type="button" className="btn btn-outline-danger btn-lg" >GET STARTED</button>
         </Carousel.Caption>
       </Carousel.Item>
@@ -33,8 +33,8 @@ export default function HomePage() {
         />
 
         <Carousel.Caption>
-          <h1>..Entertainment and Refreshment</h1>
-          <h4>free livescores and other sport updates.</h4>
+          <h2>..Entertainment and Refreshment</h2>
+          <h5>free livescores and other sport updates.</h5>
           <button type="button" className="btn btn-outline-danger btn-lg">GET STARTED</button>
         </Carousel.Caption>
       </Carousel.Item>
@@ -46,10 +46,10 @@ export default function HomePage() {
         />
 
         <Carousel.Caption>
-          <h1>...LazkSport for all, both young and aged</h1>
-          <h4>
+          <h2>...LazkSport for all, both young and aged</h2>
+          <h5>
            Internet freedom is our goal.
-          </h4>
+          </h5>
           <button type="button" className="btn btn-outline-danger btn-lg">GET STARTED</button>
         </Carousel.Caption>
       </Carousel.Item>

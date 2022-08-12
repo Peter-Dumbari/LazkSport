@@ -3,18 +3,18 @@ import axios from "axios";
 import swal from "sweetalert";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-configuration";
-import { signup, useAuth, logout, login } from "../firebase-configuration";
+import {
+  signup,
+  useAuth,
+  SignInWithGoogle,
+  signInWithFacebook,
+} from "../firebase-configuration";
 import { useHistory } from "react-router-dom";
 import Loader from "../Loaders/Loader";
 import Image from "../images/global.png";
 import Footer from "./Footer";
-import HandleModal from '../Components/HandleModal'
+import HandleModal from "../Components/HandleModal";
 import { Link } from "react-router-dom";
-
-
-
-
-
 
 export default function SubscriptionPage() {
   const history = useHistory();
@@ -22,6 +22,32 @@ export default function SubscriptionPage() {
   const currentUser = useAuth();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+
+  const HandleFacebook = () => {
+    signInWithFacebook().then((res) => {
+      console.log(res);
+      window.localStorage.setItem("Image", res.user.photoURL);
+      window.localStorage.setItem("Name", res.user.displayName);
+      window.location.reload(1);
+    }).catch(err =>{
+      alert(err)
+    })
+  };
+
+  const HandleGoogle = async () => {
+    await SignInWithGoogle()
+      .then((res) => {
+        console.log(res);
+        window.localStorage.setItem("Image", res.user.photoURL);
+        window.localStorage.setItem("Name", res.user.displayName);
+        window.location.reload(1);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const usersCollectionRef = collection(db, "Users");
 
@@ -43,7 +69,7 @@ export default function SubscriptionPage() {
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(false);
+    setIsLoading(true);
 
     await signup(emailRef.current.value, passwordRef.current.value)
       .then((res) => {
@@ -55,12 +81,13 @@ export default function SubscriptionPage() {
           });
           if (res.operationType === "signIn") {
             history.push("/home");
+            setIsLoading(false);
           }
-          setIsLoading(true);
         }
       })
       .catch((FirebaseError) => {
         alert(FirebaseError);
+        setIsLoading(false);
       });
   };
 
@@ -82,7 +109,7 @@ export default function SubscriptionPage() {
             </div>
             <div className="col-12 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded">
               <h4 className="header_Note">Create a user account to continue</h4>
-              <form className="was-validated">
+              <form className="was-validated" onSubmit={HandleSubmit}>
                 <div className="mb-3 align-text-Center">
                   <input
                     type="email"
@@ -113,15 +140,12 @@ export default function SubscriptionPage() {
 
                 <br />
                 <center>
-                  {" "}
-                  <button
-                    disabled={isLoading || currentUser}
-                    className="btn btn-danger"
-                  >
-                    Create account
-                  </button>
+                  {isLoading ? (
+                    <Loader />
+                  ) : (
+                    <button className="btn btn-danger">Create account</button>
+                  )}
                 </center>
-                {isLoading && <Loader />}
               </form>
 
               <div className="or_line">
@@ -136,9 +160,9 @@ export default function SubscriptionPage() {
               </div>
               <div className="row">
                 <div className="col">
-                  <Link to="">
+                  <span onClick={HandleFacebook} style={{ cursor: "pointer" }}>
                     <i className="fa-brands fa-facebook"></i>
-                  </Link>
+                  </span>
                   <Link to="">
                     <i
                       className="fa-brands fa-twitter-square"
@@ -149,15 +173,15 @@ export default function SubscriptionPage() {
                       }}
                     ></i>
                   </Link>
-                  <Link to="">
+                  <span onClick={HandleGoogle}>
                     <i className="fa-brands fa-google"></i>
-                  </Link>
+                  </span>
                   <Link to="">
                     <i className="fa-brands fa-linkedin"></i>
                   </Link>
                 </div>
               </div>
-              <HandleModal/>
+              <HandleModal />
             </div>
           </div>
         </div>
@@ -166,5 +190,3 @@ export default function SubscriptionPage() {
     </>
   );
 }
-
-

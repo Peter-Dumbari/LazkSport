@@ -81,6 +81,10 @@ h1{
 }
 
 
+.profilepix{
+  width: 30px;
+  border-radius: 50%;
+}
 /* light buttons style */
 
 /* .btn-primary {

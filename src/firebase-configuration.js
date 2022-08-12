@@ -7,6 +7,9 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
 } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 import { useEffect, useState } from "react";
@@ -25,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 
 // const analytics = getAnalytics(app);
 
-const auth = getAuth();
+const auth = getAuth(app);
 export const db = getFirestore();
 
 export function signup(email, password) {
@@ -47,4 +50,16 @@ export function useAuth() {
   }, []);
 
   return currentUser;
+}
+
+const googleprovider = new GoogleAuthProvider();
+
+export function SignInWithGoogle() {
+  return signInWithPopup(auth, googleprovider);
+}
+
+const facebookprovider = new FacebookAuthProvider();
+
+export function signInWithFacebook() {
+  return signInWithPopup(auth, facebookprovider);
 }

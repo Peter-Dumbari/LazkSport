@@ -9,14 +9,15 @@ import { logout, useAuth } from "../firebase-configuration";
 
 
 
+
 export default function NavbarPage() {
   const currentUser = useAuth();
   const HandleLogout = async() =>{
       await logout()
-      .then(res =>{
-        console.log(res)
-      })
+      localStorage.clear()
   }
+
+
 
   return (
     <>
@@ -80,15 +81,19 @@ export default function NavbarPage() {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
+            <Navbar.Text>
+                <span>{localStorage.getItem("Name")}</span>
+              </Navbar.Text>
             <Nav>
-              <Nav.Link eventKey={2}>
-                    <button disabled={!currentUser} type="button" className="btn btn-outline-danger" onClick={HandleLogout}>
-                    Logout
-                  </button>
-                  <p></p>
+              <Nav.Link >
+              <NavDropdown title={<img src={localStorage.getItem('Image')} className="profilepix" alt="yes"/>}  id="collasible-nav-dropdown" className="d-flex">
+                <NavDropdown.Item >
+                  <span onClick={HandleLogout}>Logout</span>                
+                </NavDropdown.Item>
+              </NavDropdown>
               </Nav.Link>
             </Nav>
-          </Navbar.Collapse>
+        </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
