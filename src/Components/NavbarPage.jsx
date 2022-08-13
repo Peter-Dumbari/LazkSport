@@ -86,7 +86,7 @@ export default function NavbarPage() {
               </Navbar.Text>
             <Nav>
               <Nav.Link >
-              <NavDropdown title={<img src={localStorage.getItem('Image')} className="profilepix" alt="yes"/>}  id="collasible-nav-dropdown" className="d-flex">
+              <NavDropdown title={<img src={localStorage.getItem('Image') || "https://th.bing.com/th/id/R.038417aec86fa504245a5410d28f350d?rik=68XYvXieCku0Og&riu=http%3a%2f%2fwww.atlantissportsclubs.com%2fwp-content%2fuploads%2f2016%2f09%2fBoyPlaceholder-01.png&ehk=pXeHbc8%2b3olVkHE8agQbUvW3OH5hLY1u5JtOgkMCM%2bA%3d&risl=&pid=ImgRaw&r=0"} className="profilepix" alt="yes"/>}  id="collasible-nav-dropdown" className="d-flex">
                 <NavDropdown.Item >
                     Update Account
                 </NavDropdown.Item>

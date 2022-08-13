@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import swal from "sweetalert";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, } from "firebase/firestore";
 import { db } from "../firebase-configuration";
 import {
   signup,
@@ -27,6 +27,9 @@ export default function SubscriptionPage() {
 
   const HandleFacebook = () => {
     signInWithFacebook().then((res) => {
+      if(res.operationType ==="signIn"){
+        history.push("/home");
+      }
       console.log(res);
       window.localStorage.setItem("Image", res.user.photoURL);
       window.localStorage.setItem("Name", res.user.displayName);
@@ -40,6 +43,9 @@ export default function SubscriptionPage() {
     await SignInWithGoogle()
       .then((res) => {
         console.log(res);
+        if(res.operationType ==="signIn"){
+          history.push("/home");
+        }
         window.localStorage.setItem("Image", res.user.photoURL);
         window.localStorage.setItem("Name", res.user.displayName);
         window.location.reload(1);
