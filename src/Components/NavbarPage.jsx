@@ -88,6 +88,9 @@ export default function NavbarPage() {
               <Nav.Link >
               <NavDropdown title={<img src={localStorage.getItem('Image')} className="profilepix" alt="yes"/>}  id="collasible-nav-dropdown" className="d-flex">
                 <NavDropdown.Item >
+                    Update Account
+                </NavDropdown.Item>
+                <NavDropdown.Item >
                   <span onClick={HandleLogout}>Logout</span>                
                 </NavDropdown.Item>
               </NavDropdown>

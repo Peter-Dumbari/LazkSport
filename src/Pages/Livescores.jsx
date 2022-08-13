@@ -4,32 +4,25 @@ import axios from "axios";
 import Footer from "../Components/Footer";
 import Pagination from "../Components/Pagination";
 import Premier from '../images/PremierLeague.png'
+import {collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase-configuration";
+import Spinner  from '../Components/Spinner'
 
 export default function Livescores() {
   const [leagues, setLeagues] = useState([]);
-  useEffect(() => {
-    axios
-      .get(
-        `https://apisoccer.com/api/Soccer/getFixturesSeasonByLeagueID?apiKey=freeAPIKey&leagueID=42719`
-      )
+  const livescoresCollectionRef = collection(db, "Livescores");
+  const [isLoading, setIsLoading] =  useState(false)
 
-      .then((response) => {
-        console.log(response.data.Data.rounds)
-        localStorage.setItem(
-          "leagues",
-          JSON.stringify(response.data.Data.rounds[0].events)
-        );
 
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
-
-  const items = JSON.parse(localStorage.getItem("leagues"));
-  console.warn(items);
-  // setLeagues(items);
-
+  useEffect(()=>{
+    setIsLoading(true)
+    const GetLivescores =async() =>{
+        const Livescore = await getDocs(livescoresCollectionRef)
+        setLeagues(Livescore.docs.map((doc)=>({...doc.data(), id: doc.id})))
+        setIsLoading(false)
+      }
+    GetLivescores();
+  },[])
 
 
   return (
@@ -53,7 +46,7 @@ export default function Livescores() {
                 <img src={Premier} alt=""  width='100px' />
                 <h4>Premier League Livescores</h4>
               </div>
-              {items.map((datas, index)=>
+              {isLoading? <Spinner/> : leagues.map((datas, id)=>
                <div
                className="row align-items-start"
                style={{
@@ -61,25 +54,22 @@ export default function Livescores() {
                  marginBottom: "1rem",
                  borderRadius: "6px",
                }}
-               key={index}
+               key={id}
              >
-              <div className="row" style={{margin: '0', padding: '0', color: 'black'}}>{datas.startTime}</div>
-               <div className="col">{datas.timeLive}</div>
+              <div className="row" style={{marginLeft: '-10%', padding: '0', color: 'black', width: '1%'}}>{datas.startTime}</div>
+               <div className="col">{datas.LiveTime}</div>
                <div
                  className="col"
                  style={{textAlign: 'left'}}
                >
-                 <div className="col">
-                   {datas.homeTeam.name}
-                   <img src="" alt="" />
+                 <div className="col" style={{marginLeft: '-10%'}}>
+                   <span style={{marginRight:"5%", width: '50%'}}>{datas.HomeTeam}</span>
+                   <img src={datas.HomeFlag} alt="" width="30px"/> <span className="scores">{datas.HomeScore}</span>
                  </div>
-                 <div className="col">
-                   {datas.awayTeam.name} <img src="" alt="" />
+                 <div className="col" style={{marginLeft: '-10%'}}>
+                 <span style={{marginRight:"5%", width: '50%'}}>{datas.AwayTeam}</span> 
+                 <img src={datas.AwayFlag} alt="" width="30px" /> <span className="scores">{datas.AwayScore}</span>
                  </div>
-               </div>
-               <div className="col">
-                 <div className="col"><h6>{datas.homeScore}</h6></div>
-                 <div className="col"><h6>{datas.awayScore}</h6></div>
                </div>
              </div>)}
                
