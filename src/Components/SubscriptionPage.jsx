@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import swal from "sweetalert";
-import { collection, addDoc, } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-configuration";
 import {
   signup,
@@ -26,24 +26,26 @@ export default function SubscriptionPage() {
   const [name, setName] = useState("");
 
   const HandleFacebook = () => {
-    signInWithFacebook().then((res) => {
-      if(res.operationType ==="signIn"){
-        history.push("/home");
-      }
-      console.log(res);
-      window.localStorage.setItem("Image", res.user.photoURL);
-      window.localStorage.setItem("Name", res.user.displayName);
-      window.location.reload(1);
-    }).catch(err =>{
-      alert(err)
-    })
+    signInWithFacebook()
+      .then((res) => {
+        if (res.operationType === "signIn") {
+          history.push("/home");
+        }
+        console.log(res);
+        window.localStorage.setItem("Image", res.user.photoURL);
+        window.localStorage.setItem("Name", res.user.displayName);
+        window.location.reload(1);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
   const HandleGoogle = async () => {
     await SignInWithGoogle()
       .then((res) => {
         console.log(res);
-        if(res.operationType ==="signIn"){
+        if (res.operationType === "signIn") {
           history.push("/home");
         }
         window.localStorage.setItem("Image", res.user.photoURL);
@@ -113,8 +115,8 @@ export default function SubscriptionPage() {
                 </h3>
               </div>
             </div>
-            <div className="col-12 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded">
-              <h4 className="header_Note">Create a user account to continue</h4>
+            <div className="col-12 col-md-5 shadow-lg p-5 mb-5 bg-transparent rounded" >
+              <h5 className="header_Note">Create a user account to continue</h5>
               <form className="was-validated" onSubmit={HandleSubmit}>
                 <div className="mb-3 align-text-Center">
                   <input
@@ -166,25 +168,12 @@ export default function SubscriptionPage() {
               </div>
               <div className="row">
                 <div className="col">
-                  <span onClick={HandleFacebook} style={{ cursor: "pointer" }}>
-                    <i className="fa-brands fa-facebook"></i>
-                  </span>
-                  <Link to="">
-                    <i
-                      className="fa-brands fa-twitter-square"
-                      style={{
-                        color: "black",
-                        fontSize: "100%",
-                        marginRight: "10%",
-                      }}
-                    ></i>
-                  </Link>
-                  <span onClick={HandleGoogle}>
-                    <i className="fa-brands fa-google"></i>
-                  </span>
-                  <Link to="">
-                    <i className="fa-brands fa-linkedin"></i>
-                  </Link>
+                  <div className="col d-flex justify-content-around shadow-sm p-3 mb-3 bg-body rounded" style={{cursor: 'pointer'}} onClick={HandleFacebook}>
+                      <i className="fa-brands fa-facebook"/> <h6>SignUp using Facebook Account</h6>
+                  </div>
+                  <div class="col d-flex justify-content-around shadow-sm p-3 mb-3 bg-body rounded" style={{cursor: 'pointer'}} onClick={HandleGoogle}>
+                      <i className="fa-brands fa-google"></i><h6>SignUp using Google Account</h6>
+                  </div>
                 </div>
               </div>
               <HandleModal />
