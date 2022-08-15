@@ -176,10 +176,10 @@ export default function SubscriptionPage() {
               <div className="row">
                 <div className="col">
                   <div className="col d-flex justify-content-around shadow-sm p-3 mb-3 bg-body rounded" style={{cursor: 'pointer'}} onClick={HandleFacebook}>
-                      <img src={facebooklogo} width="20px" height="20px"></img><span>SignUp with Facebook</span>
+                      <img src={facebooklogo} width="20px" height="20px"></img><p style={{color: "#000", fontSize: "80%"}}>SignUp with Facebook</p>
                   </div>
                   <div class="col d-flex justify-content-around shadow-sm p-3 mb-3 bg-body rounded" style={{cursor: 'pointer'}} onClick={HandleGoogle}>
-                      <img src={googlelogo} width="20px" height="20px"></img><span>SignUp with Google</span>
+                      <img src={googlelogo} width="20px" height="20px"></img><p style={{color: "#000", fontSize: '80%'}}>SignUp with Google</p>
                   </div>
                 </div>
               </div>
