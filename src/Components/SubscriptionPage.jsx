@@ -3,6 +3,8 @@ import axios from "axios";
 import swal from "sweetalert";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-configuration";
+import googlelogo from '../images/googlelogo.png'
+import facebooklogo from '../images/facebooklogo.png'
 import {
   signup,
   useAuth,
@@ -79,24 +81,29 @@ export default function SubscriptionPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    await signup(emailRef.current.value, passwordRef.current.value)
+
+    const userCredential = await signup(emailRef.current.value, passwordRef.current.value)
       .then((res) => {
         console.log(res);
         if (res.statusText === "OK") {
           swal("Thanks for subscribing!", {
             buttons: false,
             timer: 3000,
-          });
-          if (res.operationType === "signIn") {
-            history.push("/home");
-            setIsLoading(false);
-          }
+          }); 
+        }
+        if (res.operationType === "signIn") {
+          history.push("/home");
+          setIsLoading(false);
         }
       })
       .catch((FirebaseError) => {
         alert(FirebaseError);
         setIsLoading(false);
       });
+
+      await userCredential.user.sendEmailVerification({
+        url: 'http://localhost: 300'
+      })
   };
 
   return (
@@ -169,10 +176,10 @@ export default function SubscriptionPage() {
               <div className="row">
                 <div className="col">
                   <div className="col d-flex justify-content-around shadow-sm p-3 mb-3 bg-body rounded" style={{cursor: 'pointer'}} onClick={HandleFacebook}>
-                      <i className="fa-brands fa-facebook"/> <h6>SignUp using Facebook Account</h6>
+                      <img src={facebooklogo} width="20px" height="20px"></img><span>SignUp with Facebook</span>
                   </div>
                   <div class="col d-flex justify-content-around shadow-sm p-3 mb-3 bg-body rounded" style={{cursor: 'pointer'}} onClick={HandleGoogle}>
-                      <i className="fa-brands fa-google"></i><h6>SignUp using Google Account</h6>
+                      <img src={googlelogo} width="20px" height="20px"></img><span>SignUp with Google</span>
                   </div>
                 </div>
               </div>

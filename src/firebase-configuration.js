@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
+  sendEmailVerification,
 } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 import { useEffect, useState } from "react";
@@ -34,6 +35,11 @@ export const db = getFirestore();
 export function signup(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 }
+
+export function SendVerification() {
+  return sendEmailVerification(auth.currentUser);
+}
+
 export function login(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
