@@ -62,6 +62,7 @@ export default function Livescores() {
                  className="col"
                  style={{textAlign: 'left'}}
                >
+
                  <div className="col" style={{marginLeft: '-10%'}}>
                    <span style={{marginRight:"5%", width: '50%'}}>{datas.HomeTeam}</span>
                    <img src={datas.HomeFlag} alt="" width="30px"/> <span className="scores">{datas.HomeScore}</span>
