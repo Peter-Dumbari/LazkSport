@@ -5,16 +5,22 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { logout, useAuth, SendVerification } from "../firebase-configuration";
+import image from "../../src/images/newlogo.png"
+import { useHistory } from "react-router-dom";
 
 
 
 
 
 export default function NavbarPage() {
+  const history = useHistory();
   const currentUser = useAuth();
+  
   const HandleLogout = async() =>{
       await logout()
+      history.push('/welcome')
       localStorage.clear()
+
   }
 
 
@@ -24,15 +30,15 @@ export default function NavbarPage() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg="dark"
+        bg="black"
         variant="dark"
         fixed="top"
         sticky="top"
       >
         <Container>
           <Navbar.Brand>
-            <Link to="/home" style={{ textDecoration: "none", color: "#fff" }}>
-              <h3>LazkSport</h3>
+            <Link to="/">
+              <img src={image} width="150px"/>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -43,7 +49,7 @@ export default function NavbarPage() {
                   to="/features"
                   style={{
                     textDecoration: "none",
-                    color: "rgba(255,255,255,.55)",
+                    color: "white",
                   }}
                 >
                   Features
@@ -54,7 +60,7 @@ export default function NavbarPage() {
                   to="/livescores"
                   style={{
                     textDecoration: "none",
-                    color: "rgba(255,255,255,.55)",
+                    color: "white",
                   }}
                 >
                   Live Scores
@@ -82,7 +88,7 @@ export default function NavbarPage() {
               </NavDropdown>
             </Nav>
             <Navbar.Text>
-                <span>{localStorage.getItem("Name")}</span>
+                <span style={{color:"white"}}>{localStorage.getItem("Name")}</span>
               </Navbar.Text>
             <Nav>
               <Nav.Link >

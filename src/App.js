@@ -10,7 +10,8 @@ import Nopage from "./Pages/Nopage";
 import SubscriptionPage from "./Components/SubscriptionPage";
 import users from "./Pages/users";
 import { useAuth } from "./firebase-configuration";
-import OpeningNav from "./Components/OpeningNav";
+import OpeningNav from "./Components/OpeningNav/OpeningNav";
+import Fullnews from "./Pages/FullNews/Fullnews";
 
 export default function App() {
   const CurrentUsers = useAuth();
@@ -18,20 +19,20 @@ export default function App() {
   return (
     <>
       <Router>
-        {CurrentUsers ? <NavbarPage /> : <OpeningNav />}
-        {CurrentUsers ? (
+        {CurrentUsers ? <NavbarPage /> : null}
+        {!CurrentUsers ? (
           <Switch>
-            <Route path="/home" exact component={HomePage} />
+            <Route path="/welcome" exact component={SubscriptionPage} />
+            <Route path="/fullnews/:newsid" component={Fullnews} />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path="/" exact component={HomePage} />
             <Route path="/leagues" component={Leagues} />
             <Route path="/livescores" component={Livescores} />
             <Route path="/livescoresPage" component={Livescore} />
             <Route path="/features" component={Features} />
             <Route path="/users" component={users} />
-            <Route path="*" component={Nopage} />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path="/" component={SubscriptionPage} />
           </Switch>
         )}
       </Router>

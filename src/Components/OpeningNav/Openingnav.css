@@ -1,0 +1,157 @@
+
+
+.nav-link{
+    padding: 0 20px 0 20px !important;
+    font-size: larger;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.61);
+}
+
+.nav-link:hover, .nav-link.active{
+    color: rgb(211, 71, 16);
+    transition: 0.5s;
+}
+
+.search-box{
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.842);
+    font-size: larger;
+}
+
+.search-box:focus{
+    background: transparent !important;
+    border: none;
+    box-shadow: none;
+}
+
+.opening-nav{
+    background: url("https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80") center center;
+    transition: 0.5s;
+
+}
+@media screen and (max-width: 991.98px) { 
+    .nav-link{
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .search-box{
+        border: none;
+        background: transparent;
+       
+    }
+
+    .search-box:focus{
+        border: none;
+        color: #000;
+        background: transparent;
+    }
+
+    .search-box::placeholder{
+        color: #000;
+    }
+
+    
+    .fa-bars{
+        color: rgb(83, 29, 8)!important;
+    }
+
+    .fa-bars::before{
+        border: 3px solid !important;
+        content: attr('hello world');
+    }
+    .navbar-toggler:focus{
+        box-shadow: none;
+        border: 3px dashed  rgb(83, 29, 8);
+    }
+ }
+
+@media screen and (max-width: 767.98px) { 
+    
+    .nav-link{
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .search-box{
+        border: 1px solid;
+        background-color: rgb(83, 29, 8);   
+    }
+
+    .search-box:focus{
+        border: 1px solid;
+        border-color: white;
+        background-color: rgb(83, 29, 8) !important;
+        color: white;
+    }
+
+    .search-box::placeholder{
+        color: #fff;
+    }
+
+    .fa-bars::before{
+        border: 3px solid !important;
+        content: attr('hello world');
+    }
+    .fa-bars{
+        color: rgb(83, 29, 8)!important;
+    }
+
+    .navbar-toggler:focus{
+        box-shadow: none;
+        border: 3px dashed  rgb(83, 29, 8);
+    }
+ }
+
+@media screen and (max-width: 575.98px) { 
+    .navbar-brand >img{
+        width: 25vw;
+    }
+
+    .nav-link{
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .subscription_carousel{
+        margin-bottom: 2rem;
+    }
+    .carousel_header{
+        font-size: 3vw;
+    }
+
+    .carousel-item >h3{
+        font-size: 8vw;
+    }
+
+    .search-box{
+        border: 1px solid;
+        background-color: rgb(83, 29, 8);   
+    }
+
+    .search-box:focus{
+        border: 1px solid;
+        border-color: white;
+        background-color: rgb(83, 29, 8) !important;
+        color: white;
+    }
+
+    .search-box::placeholder{
+        color: #fff;
+    }
+
+    .fa-bars::before{
+        border: 3px solid !important;
+        content: attr('hello world');
+    }
+    .fa-bars{
+        color: rgb(83, 29, 8)!important;
+    }
+
+    .navbar-toggler:focus{
+        box-shadow: none;
+        border: 3px dashed  rgb(83, 29, 8);
+    }
+  }
+

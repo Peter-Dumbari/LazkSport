@@ -1,0 +1,223 @@
+.first_card {
+  border: none;
+  background-color: transparent;
+}
+
+.second_card{
+    border: none;
+    background-color: transparent;
+}
+.company_name {
+  padding-top: 7px;
+  color: rgb(240, 84, 84);
+  font-size: 2vw;
+  font-family: "Cormorant-VariableFont_wght";
+  font-weight: bolder;
+}
+
+.second_company_name{
+    padding-top: 7px;
+  color: #000;
+  font-size: 2vw;
+  font-family: "Cormorant-VariableFont_wght";
+  font-weight: bolder;
+}
+.card_topper {
+  background-color: rgb(94, 93, 93);
+  border: none !important;
+  color: #fff;
+  border-top-left-radius: 10px !important ;
+  border-top-right-radius: 10px;
+  padding-bottom: 1.8rem;
+}
+
+.card_topper> h6{
+    font-family: 'KellySlab-Regular';
+}
+
+.second_card_topper{
+  background-color: rgb(224, 220, 220);
+  border: none !important;
+  color: #000;
+  border-top-left-radius: 10px !important ;
+  border-top-right-radius: 10px;
+  padding-bottom: 1.8rem;
+}
+
+.second_card_topper> h6{
+    font-family: 'KellySlab-Regular';
+}
+
+.card_white_body {
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 90%;
+  width: 100%;
+  border: 1px solid rgb(94, 93, 93);
+  padding: 2rem;
+}
+
+.second_card_white_body {
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 90%;
+  width: 100%;
+  border: 1px solid rgb(224, 220, 220);
+  padding: 2rem;
+}
+
+.second_part_white_body {
+  text-align: left;
+}
+
+.second_second_part_white_body{
+    text-align: left;
+}
+
+.dollar_sign {
+  font-size: 2vw !important;
+  font-weight: bolder;
+}
+.card_white_body > span {
+  font-size: 3vw;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.second_card_white_body > span {
+  font-size: 3vw;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.second_card_white_body > h6 {
+  font-weight: bold;
+}
+
+.card_white_body > h6 {
+  font-weight: bold;
+}
+
+.hearder {
+  font-weight: bold;
+  color: rgb(240, 84, 84);
+  font-family: 'KellySlab-Regular';
+}
+
+.second_part_white_body > ul > li {
+    list-style: custom-unordered;
+}
+
+
+.second_second_part_white_body > ol>li{
+    list-style: custom-order;
+    margin-bottom: 1rem;
+}
+
+
+.second_second_part_white_body>ol{
+    margin-bottom: 12.5rem;
+}
+.card_button_container {
+  position: relative;
+  border-top: 2px dashed;
+  border-right: 2px dashed;
+  z-index: 0;
+  border-top-right-radius: 10px;
+  padding: 5px;
+  margin-top: 3rem;
+}
+
+.card_button_container > select {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  color: rgb(240, 84, 84);
+}
+
+
+.card_button_container > select > option {
+  color: black;
+}
+.second_part_white_body > button {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.second_second_part_white_body > button{
+    margin-top: 2rem;
+  width: 100%;
+}
+
+.live_timing_batch {
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  z-index: 3;
+  background-color: #fff;
+  font-weight: bold;
+}
+
+.card_background{
+    height: 105vh;
+}
+
+.subscription_type_toggler{
+    align-items: center;
+    justify-content: center;
+}
+
+.subscription_type_toggler> span{
+    font-weight: bold;
+}
+
+.fa-toggle-off{
+    margin: 0 20px 0 20px;
+    font-size: 1.8rem;
+    color: rgb(240, 84, 84);
+}
+
+.bottom_note_container{
+    text-align: left;
+    padding: 0 30px 0 30px;
+    margin-top: 3rem;
+}
+
+.color-red{
+    color: rgb(240, 84, 84);
+    cursor: pointer;
+}
+@font-face {
+  font-family: AngillaTattooPersonalUse-9pz5;
+  src: local("AngillaTattooPersonalUse-9pz5"),
+    url("AngillaTattooPersonalUse-9pz5.ttf") format("TrueType");
+}
+
+@font-face {
+  font-family: KellySlab-Regular;
+  src: local("KellySlab-Regular"),
+    url("KellySlab-Regular.ttf") format("TrueType");
+}
+
+@counter-style custom-unordered {
+    system: cyclic;
+    symbols:  '🔴' ;
+    suffix: '';
+  }
+@counter-style custom-order {
+    system: cyclic;
+    symbols:  '✔️' ;
+    suffix: '';
+  }
+
+  ul {
+    list-style: custom-unordered;
+    /* or list-style-type: custom-unordered; */
+  }
+  ol {
+    list-style: custom-order;
+    /* or list-style-type: custom-unordered; */
+  }

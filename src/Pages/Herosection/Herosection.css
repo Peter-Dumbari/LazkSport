@@ -1,0 +1,195 @@
+.image_section >img{
+width: 100%;
+height: 100%;
+}
+
+.description_section>h2{
+font-size: 6vh;
+font-weight: bold;
+margin-bottom: 2rem;
+font-family: 'Audiowide-Regular';
+color: black;
+}
+
+.description_section> select{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 7px;
+    border: none;
+}
+.carousel_container{
+    position: relative;
+}
+.carousel_container>img{
+    width: 100%;
+    border-radius: 14px;
+}
+
+
+.carousel_box{
+    position: absolute;
+    top: 0;
+    margin: 30px 8rem 0 8rem;
+    color: rgba(255, 255, 255, 0.274);
+}
+.carousel_box > h1{
+    font-family: 'Audiowide-Regular';
+    font-weight: bolder;
+}
+
+.carousel_box >h5{
+    font-family: 'KellySlab-Regular';
+}
+
+
+.carouselinner{
+    border: 10px solid;
+    border-radius: 35px;
+    padding: 4rem 0 4rem 5rem;
+    margin-top: 2rem;
+}
+
+.carousel_tabs{
+    border: none !important;
+}
+
+.carousel_tab>button{
+    border: none !important;
+    color: rgba(255, 255, 255, 0.274) !important;
+    margin-right: 2rem !important;
+}
+
+.fa-gauge-high,.fa-signal,.fa-microphone{
+    font-size: 1.8rem;
+}
+.carousel_tab>.nav-link.active{
+    background-color: transparent !important;
+    color: red !important;
+}
+
+
+.carousel_tab>.nav-link.focus{
+    border: none !important;
+}
+/* THE CAROUSEL CONTENT TAB */
+.carousel_tab_content{
+    padding: 13px;
+    margin-top: 2rem;
+    z-index: 2;
+    color: #fff;
+}
+
+
+.tab_content_text>h2{
+    font-family: 'KellySlab-Regular';
+}
+
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 10px !important;
+    height: 0 !important;
+    background-repeat:repeat !important;
+    background-position: 10% !important;
+    background-size:auto !important;
+}
+
+
+.carousel_navigator_container{
+    justify-content: space-between;
+    width: 7%;
+    margin-top: 3rem;
+}
+
+.number_indicator{
+    position: absolute;
+    left: -60px;
+    font-size: 30px;
+    line-height: 24px;
+    top: -10px;
+    z-index: 0;
+    background-image: url(https://www.formula1.com/content/dam/fom-website/subscribe-to-f1/stf1-LT-background.png);
+    background-position: -200px -500px;
+    padding-left: 3em;
+    padding-right: 2.4em;
+    font-size: 1.2rem;
+    font-weight: bold;
+   
+}
+
+.carousel_navigator_container{
+    position: relative;
+}
+
+.number_indicator>h1{
+    font-family: 'Audiowide-Regular';
+    font-size: 6vw;
+}
+
+.carousel_navigator_container> i{
+    color: #fff;
+}
+
+.carousel_box>h1,
+.carousel_box>h5{
+    color: #fff;
+}
+
+.carsousel_image_displayer{
+   display: block;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+.fa-chevron-left{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.fa-chevron-left :focus,
+.fa-chevron-left:active,
+.fa-chevron-left :hover{
+    color: red;
+    transition: 0.5ms;
+    padding: 3px ;
+    background-color: #fff;
+}
+.fa-chevron-right{
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.fa-chevron-right :focus,
+.fa-chevron-right:active,
+.fa-chevron-right :hover{
+    color: red;
+    transition: 0.2ms;
+    padding: 3px ;
+    background-color: #fff;
+}
+
+/* .carousel-indicators [data-bs-target] {
+    box-sizing:border-box;
+    flex:none;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    text-indent: none !important;
+    cursor: pointer;
+    background-color: none !important;
+    background-clip:none !important;
+    border: 0;
+    border-top: none !important;
+    border-bottom: none !important;
+    opacity: 0 !important;
+    transition: opacity .6s ease;
+    
+} */
+@font-face {
+    font-family:Audiowide-Regular;
+    src: local("Audiowide-Regular"),
+      url("Audiowide-Regular.ttf") format("TrueType");
+  }

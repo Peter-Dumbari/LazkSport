@@ -14,7 +14,7 @@ export default function Livescores() {
   const [isLoading, setIsLoading] =  useState(false)
 
 
-  useEffect(()=>{
+ useEffect(()=>{
     setIsLoading(true)
     const GetLivescores =async() =>{
         const Livescore = await getDocs(livescoresCollectionRef)
@@ -23,7 +23,7 @@ export default function Livescores() {
       }
     GetLivescores();
   },[])
-
+ 
 
   return (
     <>
