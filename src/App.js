@@ -22,7 +22,7 @@ export default function App() {
         {CurrentUsers ? <NavbarPage /> : null}
         {!CurrentUsers ? (
           <Switch>
-            <Route path="/welcome" exact component={SubscriptionPage} />
+            <Route path="/welcome" component={SubscriptionPage} />
             <Route path="/fullnews/:newsid" component={Fullnews} />
           </Switch>
         ) : (
