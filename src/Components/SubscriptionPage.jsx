@@ -75,11 +75,12 @@ export default function SubscriptionPage() {
         }
         window.localStorage.setItem("Image", res.user.photoURL);
         window.localStorage.setItem("Name", res.user.displayName);
-        window.location.reload(1);
       })
       .catch((err) => {
         console.log(err);
       });
+
+      
   };
 
   const usersCollectionRef = collection(db, "Users");

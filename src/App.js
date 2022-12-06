@@ -27,7 +27,7 @@ export default function App() {
           </Switch>
         ) : (
           <Switch>
-            <Route path="/home" exact component={HomePage} />
+            <Route path="/home" component={HomePage} />
             <Route path="/leagues" component={Leagues} />
             <Route path="/livescores" component={Livescores} />
             <Route path="/livescoresPage" component={Livescore} />
