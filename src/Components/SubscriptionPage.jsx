@@ -54,7 +54,7 @@ export default function SubscriptionPage() {
     signInWithFacebook()
       .then((res) => {
         if (res.operationType === "signIn") {
-          history.push("/");
+          history.push("/home");
         }
         console.log(res);
         window.localStorage.setItem("Image", res.user.photoURL);
@@ -71,7 +71,7 @@ export default function SubscriptionPage() {
       .then((res) => {
         console.log(res);
         if (res.operationType === "signIn") {
-          history.push("/");
+          history.push("/home");
         }
         window.localStorage.setItem("Image", res.user.photoURL);
         window.localStorage.setItem("Name", res.user.displayName);

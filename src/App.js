@@ -22,12 +22,12 @@ export default function App() {
         {CurrentUsers ? <NavbarPage /> : null}
         {!CurrentUsers ? (
           <Switch>
-            <Route path="/welcome" component={SubscriptionPage} />
+            <Route path="/" exact component={SubscriptionPage} />
             <Route path="/fullnews/:newsid" component={Fullnews} />
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={HomePage} />
+            <Route path="/home" exact component={HomePage} />
             <Route path="/leagues" component={Leagues} />
             <Route path="/livescores" component={Livescores} />
             <Route path="/livescoresPage" component={Livescore} />

@@ -18,7 +18,7 @@ export default function NavbarPage() {
   
   const HandleLogout = async() =>{
       await logout()
-      history.push('/welcome')
+      history.push('/')
       localStorage.clear()
 
   }
