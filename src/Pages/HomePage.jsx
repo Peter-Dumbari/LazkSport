@@ -21,7 +21,7 @@ export default function HomePage() {
   })
   return (
     <>
-    {isLoading? <h1>Loading</h1>: 
+    {isLoading? <h6>Please wait...</h6>: 
     <>
       <div className="Home_container">
       <div className="homepage_image_container">

@@ -21,11 +21,6 @@ export default function NavbarPage({profilePicture, usersName}) {
       navigate('/')
       window.localStorage.clear();
   } 
-
-
-useEffect(()=>{
-  console.log(profilePicture, usersName)
-})
   return (
     <>
       <Navbar

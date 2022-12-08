@@ -40,7 +40,6 @@ export default function SubscriptionPage() {
         window.localStorage.setItem("ProfilePicture", res.user.photoURL);
         window.localStorage.setItem('UsersName', res.user.displayName);
       }
-      console.log(res);
     })
     .catch((err) => {
       console.warn(err);
