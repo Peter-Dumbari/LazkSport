@@ -60,7 +60,7 @@ export function useAuth() {
 
 const googleprovider = new GoogleAuthProvider();
 
-export function SignInWithGoogle() {
+export function signInWithGoogle() {
   return signInWithPopup(auth, googleprovider);
 }
 

@@ -2,14 +2,15 @@ import React, { useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {login} from "../firebase-configuration"
-import { useHistory } from 'react-router-dom';
 import Loader from '../Loaders/Loader';
+import { useNavigate } from "react-router-dom";
+
 
 function HandleModal() {
+      const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const emailRef = useRef();
     const passwordRef = useRef();
-    const history = useHistory();
     const [isLoading, setIsLoading]= useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,7 +21,7 @@ function HandleModal() {
     await login(emailRef.current.value, passwordRef.current.value)
       .then((res) => {
         if (res.operationType === "signIn") {
-          history.push("/home");
+          navigate("/home");
           setIsLoading(false)
         }
         console.log(res);

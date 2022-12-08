@@ -6,25 +6,26 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { logout, useAuth, SendVerification } from "../firebase-configuration";
 import image from "../../src/images/newlogo.png"
-import { useHistory } from "react-router-dom";
+import { Profiler } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 
-
-export default function NavbarPage() {
-  const history = useHistory();
+export default function NavbarPage({profilePicture, usersName}) {
+  const navigate = useNavigate();
   const currentUser = useAuth();
   
   const HandleLogout = async() =>{
       await logout()
-      history.push('/')
-      localStorage.clear()
-
-  }
-
+      navigate('/')
+      window.localStorage.clear();
+  } 
 
 
+useEffect(()=>{
+  console.log(profilePicture, usersName)
+})
   return (
     <>
       <Navbar
@@ -37,7 +38,7 @@ export default function NavbarPage() {
       >
         <Container>
           <Navbar.Brand>
-            <Link to="/">
+            <Link to="/home">
               <img src={image} width="150px"/>
             </Link>
           </Navbar.Brand>
@@ -88,11 +89,11 @@ export default function NavbarPage() {
               </NavDropdown>
             </Nav>
             <Navbar.Text>
-                <span style={{color:"white"}}>{localStorage.getItem("Name")}</span>
+                <span style={{color:"white"}}>{usersName}</span>
               </Navbar.Text>
             <Nav>
               <Nav.Link >
-              <NavDropdown title={<img src={localStorage.getItem('Image') || "https://th.bing.com/th/id/R.038417aec86fa504245a5410d28f350d?rik=68XYvXieCku0Og&riu=http%3a%2f%2fwww.atlantissportsclubs.com%2fwp-content%2fuploads%2f2016%2f09%2fBoyPlaceholder-01.png&ehk=pXeHbc8%2b3olVkHE8agQbUvW3OH5hLY1u5JtOgkMCM%2bA%3d&risl=&pid=ImgRaw&r=0"} className="profilepix" alt="yes"/>}  id="collasible-nav-dropdown" className="d-flex">
+              <NavDropdown title={<img src={profilePicture || "https://th.bing.com/th/id/R.038417aec86fa504245a5410d28f350d?rik=68XYvXieCku0Og&riu=http%3a%2f%2fwww.atlantissportsclubs.com%2fwp-content%2fuploads%2f2016%2f09%2fBoyPlaceholder-01.png&ehk=pXeHbc8%2b3olVkHE8agQbUvW3OH5hLY1u5JtOgkMCM%2bA%3d&risl=&pid=ImgRaw&r=0"} className="profilepix" alt="yes"/>}  id="collasible-nav-dropdown" className="d-flex">
                 <NavDropdown.Item >
                 <span onClick={SendVerification}>Update Account</span>                
                 </NavDropdown.Item>

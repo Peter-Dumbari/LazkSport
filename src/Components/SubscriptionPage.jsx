@@ -8,10 +8,9 @@ import facebooklogo from "../images/facebooklogo.png";
 import {
   signup,
   useAuth,
-  SignInWithGoogle,
+  signInWithGoogle,
   signInWithFacebook,
 } from "../firebase-configuration";
-import { useHistory } from "react-router-dom";
 import Loader from "../Loaders/Loader";
 import Image from "../images/global.png";
 import Footer from "./Footer";
@@ -25,10 +24,45 @@ import { Waypoint } from "react-waypoint";
 import "animate.css";
 import logo from "../images/newlogo.png";
 import "../Components/OpeningNav/Openingnav.css";
+import { useNavigate } from "react-router-dom";
 
 export default function SubscriptionPage() {
+  const navigate = useNavigate();
   const customer_rep = collection(db, "Customer_Cares");
   const [customerRep, setCustomerRep] = useState([]);
+
+  
+
+  const HandleGoogle = async () => {
+    await signInWithGoogle().then((res) => {
+      if (res.operationType === "signIn") {
+        navigate("/home");
+        window.localStorage.setItem("ProfilePicture", res.user.photoURL);
+        window.localStorage.setItem('UsersName', res.user.displayName);
+      }
+      console.log(res);
+    })
+    .catch((err) => {
+      console.warn(err);
+    });
+  };
+
+  const HandleFacebook = () => {
+    signInWithFacebook()
+      .then((res) => {
+        if (res.operationType === "signIn") {
+          window.localStorage.setItem("ProfilePicture", res.user.photoURL);
+          window.localStorage.setItem('UsersName', res.user.displayName);
+          navigate("/home");
+        }
+        console.log(res);
+        
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
 
   useEffect(() => {
     // setIsLoading(true)
@@ -42,7 +76,6 @@ export default function SubscriptionPage() {
     customerCare();
   }, []);
 
-  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const currentUser = useAuth();
   const emailRef = useRef();
@@ -50,39 +83,7 @@ export default function SubscriptionPage() {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
 
-  const HandleFacebook = () => {
-    signInWithFacebook()
-      .then((res) => {
-        if (res.operationType === "signIn") {
-          history.push("/home");
-        }
-        console.log(res);
-        window.localStorage.setItem("Image", res.user.photoURL);
-        window.localStorage.setItem("Name", res.user.displayName);
-        window.location.reload(1);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
-  const HandleGoogle = async () => {
-    await SignInWithGoogle()
-      .then((res) => {
-        console.log(res);
-        if (res.operationType === "signIn") {
-          history.push("/home");
-        }
-        window.localStorage.setItem("Image", res.user.photoURL);
-        window.localStorage.setItem("Name", res.user.displayName);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-      
-  };
-
+    
   const usersCollectionRef = collection(db, "Users");
 
   // const HandleLogout = () =>{
@@ -118,7 +119,7 @@ export default function SubscriptionPage() {
           });
         }
         if (res.operationType === "signIn") {
-          history.push("/");
+          navigate("/home");
           setIsLoading(false);
         }
       })
