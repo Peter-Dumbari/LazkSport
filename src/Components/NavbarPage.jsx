@@ -53,7 +53,7 @@ export default function NavbarPage({profilePicture, usersName}) {
               </Nav.Link>
               <Nav.Link>
                 <Link
-                  to="/livescores"
+                  to="/livescore"
                   style={{
                     textDecoration: "none",
                     color: "white",

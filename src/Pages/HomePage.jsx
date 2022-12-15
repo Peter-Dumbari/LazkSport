@@ -1,6 +1,4 @@
 import React from "react";
-import Manu from "../images/Ronaldo image.jpg";
-import Messi from "../images/messiboko.jpg";
 import Chelsea from "../images/chelsea.jpg";
 import Box from "./Card";
 import Footer from "../Components/Footer";
