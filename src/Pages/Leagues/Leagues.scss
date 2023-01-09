@@ -68,3 +68,53 @@ margin-bottom: 2rem;
     width: 20%;
     color: #fff;
 }
+
+.email_container{
+    background-color: #fff;
+    padding: 35px;
+    text-align: center;
+    margin-top: 4rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4rem;
+
+
+    .email_items{
+        width: 100%;
+        justify-content: space-evenly !important;
+
+        h2{
+            font-family: 'AngillaTattooPersonalUse-9pz5.ttf';
+            font-size: 2.3rem;
+        }
+
+        .email_input{
+            width: 42%;
+            border: 5px solid black;
+            
+            form{
+                input{
+                    width: 65% !important;
+                    padding: 13px;
+                    border: none;
+                }
+
+                input:focus{
+                    outline: none;
+                }
+
+                button{
+                    padding: 13px 20px;
+                    width: 35%;
+                    background-color: black;
+                    border: none;
+                    color: #fff;
+                    font-weight: 500;
+                }
+            }
+            
+        }
+    }
+        
+   
+}

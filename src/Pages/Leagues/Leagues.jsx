@@ -4,6 +4,7 @@ import "../Leagues/Leagues.scss";
 import LeaguesCard from "./LeaguesCard/LeaguesCard";
 import axios from "axios";
 import { PaginatedItems } from "../../Components/ReactPaginate/ReactPaginate";
+import LeagueBox from "./LeagueBox/LeagueBox";
 
 export default function Livescore() {
   const [loading, setLoading] = useState(false);
@@ -106,7 +107,6 @@ export default function Livescore() {
           <h5 className="nd_paragraph">
             Read less, know more. <i>It’s free, forever!</i>
           </h5>
-
           <div className="subscription_input_box_container">
             <div className="subscription_box d-line">
               <form action="">
@@ -130,6 +130,27 @@ export default function Livescore() {
         items={league}
         loading={loading}
       />
+
+      <div className="email_container container-fluid">
+        <div className="d-inline-flex email_items">
+          <h2>One email. Double the hot takes.</h2>
+          <div className="email_input d-line">
+              <form>
+                <input
+                  type="email"
+                  name=""
+                  id=""
+                  placeholder="Enter your email"
+                  required
+                />
+                <button>
+                  Subscribe for free
+                </button>
+              </form>
+            </div>
+        </div>
+      </div>
+      <LeagueBox/>
     </div>
   );
 }

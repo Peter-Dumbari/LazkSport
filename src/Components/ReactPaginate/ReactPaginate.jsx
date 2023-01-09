@@ -45,9 +45,9 @@ export function PaginatedItems({ itemsPerPage, items, loading }) {
         breakLabel="..."
         nextLabel="Next"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        // pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="Back"
+        previousLabel="Prev"
         renderOnZeroPageCount={null}
         breakClassName="breakclass"
         breakLinkClassName="breakLinkClassName"

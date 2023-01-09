@@ -1,0 +1,56 @@
+.leagueBox_header {
+  justify-content: space-between !important;
+  width: 100%;
+
+  h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  button {
+    width: 25%;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+}
+
+.box_container {
+  .row {
+    padding: 0 !important;
+    margin-top: 3rem;
+  }
+
+  .col-md-4 {
+    .card {
+      .card-text {
+        padding: 22px 25px 18px;
+        .text-muted {
+          margin-bottom: 8px !important;
+          color: #616161;
+          font-size: 11px;
+          line-height: 14px;
+          font-weight: 400;
+          letter-spacing: 0.4px;
+        }
+        h5 {
+          display: block;
+          margin-top: 0;
+          margin-bottom: 4px;
+          color: #101113;
+          font-size: 24px;
+          line-height: 32px;
+          font-weight: 600;
+        }
+
+        h6{
+            margin-bottom: 0;
+            color: #69737c;
+            font-size: 15px;
+            line-height: 1.4em;
+            
+        }
+      }
+    }
+  }
+}
