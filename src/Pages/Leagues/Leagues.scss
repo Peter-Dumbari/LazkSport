@@ -1,0 +1,69 @@
+.Livescore_body_container{
+    justify-content: center;
+    background-color: rgb(230, 226, 226) !important;
+    padding-bottom: 2rem;
+}
+
+.livescore_container{
+    justify-content: space-around !important;
+    background-image: url("../../images/background-image.png");
+    background-repeat: no-repeat;
+    background-position: left 40%;
+    background-size:contain;
+    margin-bottom: 5rem;
+}
+
+.livescore_image img{
+    width: 100%;
+}
+
+.livescore_header{
+    padding: 3px;
+}
+
+.livescore_header_text p{
+    color: black !important;
+}
+
+.livescore_header_text h1{
+    font-size: 5rem;
+    font-family: 'AngillaTattooPersonalUse-9pz5.ttf';
+    line-height: 75px;
+}
+
+.livescore_header_text h5{
+    opacity: 40%;
+}
+.st_paragraph{
+margin-bottom: 2rem;
+}
+
+.nd_paragraph{
+    margin-bottom: 3rem;
+}
+.subscription_box{
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.483);
+    justify-content: space-between;
+    width: 80%;
+}
+
+.subscription_box input{
+    padding: 10px;
+    width: 80%;
+    border: none;
+}
+
+.subscription_box input:focus{
+    border: none;
+    outline: none;
+    
+}
+
+.subscription_box button{
+    padding: 10px;
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    width: 20%;
+}

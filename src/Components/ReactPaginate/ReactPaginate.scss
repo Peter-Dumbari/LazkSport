@@ -1,0 +1,73 @@
+.breakclass{
+    .breakLinkClassName{
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+
+
+.pagelink{
+    list-style: none;
+    margin: 0 0.5rem 0 0.5rem;
+    color: black;
+}
+
+.pagelink:hover{
+    color: #000;
+}
+
+.containerclass{
+display: flex;    
+align-items: center;
+justify-content: center;
+list-style: none !important;
+align-self: center !important;
+margin: 3rem 20rem 3rem 20rem;
+background: linear-gradient(rgba(0, 0, 0, 0.483), rgba(235, 230, 230, 0.096), rgba(0, 0, 0, 0.483));
+}
+
+.pageClassName{
+    text-decoration: none !important;
+    a{
+        text-decoration: none !important;
+    }
+}	
+
+.previousClassName{
+    a{
+        text-decoration: none;
+        color: black;
+        margin-right: 2rem;
+    }
+}
+
+.nextClassName{
+    .nextLinkClassName{
+        text-decoration: none;
+        color: #000;
+        margin-left: 2rem;
+
+    }
+}
+
+.activeClassName{
+    background-color: rgba(0, 0, 0, 0.483);
+    justify-content: center;
+
+    .activeLinkClassName{
+        color: #fff;
+    }
+
+    .activeLinkClassName:hover{
+        color: #fff;
+    }
+}
+
+.disabledClassName{
+
+    .disabledLinkClassName{
+        opacity: 20%;
+        cursor:default;
+    }
+}

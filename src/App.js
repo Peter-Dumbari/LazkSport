@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavbarPage from "./Components/NavbarPage";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
-import Leagues from "./Pages/Leagues";
+import Leagues from "./Pages/Leagues/Leagues";
 import Features from "./Pages/Features";
 import SubscriptionPage from "./Components/SubscriptionPage";
 import { useAuth } from "./firebase-configuration";

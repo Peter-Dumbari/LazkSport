@@ -1,0 +1,88 @@
+.container{
+    h1{
+        font-family: "AngillaTattoPersonalUse-9pz5.ttf";
+    }
+}
+
+.row-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    grid-auto-columns: 1fr;
+    gap: 24px;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    -webkit-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 24px;
+    column-gap: 24px;
+    -webkit-column-rule-width: 0px;
+    column-rule-width: 0px;
+}
+
+.column{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-top: 24px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    border-radius: 0;
+    background-color: #fff;
+    box-shadow: 0 0 12px 0 rgb(206 175 39 / 5%);
+    color: #2c323a;
+    text-align: left;
+}
+
+
+.card {
+  color: black !important;
+  border: none !important;
+  padding: 1.5rem;
+  border-radius: 0 !important;
+
+  
+  .card-header {
+    width: 100% !important;
+    border: none !important;
+    background: transparent !important;
+
+    .d-inline-flex {
+      width: 100% !important;
+      justify-content: space-between !important;
+
+      .fa-futbol {
+        font-size: larger;
+        font-weight: 200 !important;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .card-body {
+    height: fit-content;
+    p {
+      color: black !important;
+      height: auto;
+    }
+  }
+}
