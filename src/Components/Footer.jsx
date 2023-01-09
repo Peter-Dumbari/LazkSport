@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import FooterAnimation from "./FooterAnimation/FooterAnimation";
 
 export default function Footer() {
   return (
-    <div className="container-fluid text-center bg-secondary sticky-bottom" style={{margin: '0', width: '100%'}}>
+    <div className="container-fluid text-center bg-dark sticky-bottom" style={{margin: '0', width: '100%'}}>
       <div className="row" >
         <div className="col-sm-4">
           <p className="fs-5">About us</p>
@@ -37,6 +38,7 @@ export default function Footer() {
           <p className="fs-8">LazkSport © 2022 All Right Reserved </p>
         </div>
       </div>
+      <FooterAnimation/>
     </div>
   );
 }

@@ -6,7 +6,8 @@ import axios from "axios";
 import { PaginatedItems } from "../../Components/ReactPaginate/ReactPaginate";
 
 export default function Livescore() {
-  const [league, setLeague]=useState([
+  const [loading, setLoading] = useState(false);
+  const [league, setLeague] = useState([
     // {index: 0,
     // name: "Premier League"
     // },
@@ -63,26 +64,28 @@ export default function Livescore() {
     //   index: 3,
     //   name: "Drinking cup"
     // }
-  ])
-  const itemsPerPage = 9
+  ]);
+  const itemsPerPage = 12;
   const Pi = "647bdb30-0cd6-11ed-8943-fb6bf593a257";
 
-
-  useEffect(() =>{
-    const getData = async()=>{
-      axios.get(`https://app.sportdataapi.com/api/v1/soccer/leagues? apikey=${Pi}`)
-      .then(response =>{
-       setLeague(response.data.data)
-       console.log(league)
-      })    
-      .catch(error =>{
-       console.warn(error)
-      })
-    }
-    getData()
-     },[])
-
-
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      axios
+        .get(`https://app.sportdataapi.com/api/v1/soccer/leagues? apikey=${Pi}`)
+        .then((response) => {
+          setLeague(response.data.data);
+          console.log(league);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.warn(error);
+          setLoading(false);
+          alert(error.message);
+        });
+    };
+    getData();
+  }, []);
 
   return (
     <div className="Livescore_body_container">
@@ -114,13 +117,19 @@ export default function Livescore() {
                   placeholder="Enter your email"
                   required
                 />
-                <button><i class="fa-solid fa-arrow-right"></i></button>
+                <button>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
               </form>
             </div>
           </div>
         </div>
       </div>
-      <PaginatedItems itemsPerPage={itemsPerPage} items={league}/>
+      <PaginatedItems
+        itemsPerPage={itemsPerPage}
+        items={league}
+        loading={loading}
+      />
     </div>
   );
 }

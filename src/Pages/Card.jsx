@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from "react";
-import Manu from "../images/manunited.png";
-import Cricket from "../images/Cricket.jpg";
-import BaseBall from "../images/Peoples.png";
 import "../App.css";
-import davido from "../images/DAvido.gif";
 import { db } from "../firebase-configuration";
 import { collection, addDoc } from "firebase/firestore";
 import "./Card.css";
+import Switch from "react-switch";
 
 export default function Box() {
   const [ok, setOk] = useState(false);
   const [hard, setHard] = useState(false);
   const usersCollectionRef = collection(db, "Comments");
+  const [checked, setChecked] = useState(false);
 
   const datas = {
     ok: ok,
     hard: hard,
   };
+
+
+  const handChecked =()=>{
+    setChecked(!checked)
+    if(checked == true){
+      alert("you did an anual supbsription")
+    }else if(checked == false){
+      alert("you did a monthly supbscription")
+    }
+  }
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -136,22 +144,33 @@ export default function Box() {
             </div>
           </div>
         </div>
-        <div className="card_background">
-
-        </div>
+        <div className="card_background"></div>
         <div className="d-flex subscription_type_toggler">
           <span className="text-muted">Annual</span>
-          <i className="fa-solid fa-toggle-off"></i>          
+          <Switch
+            onChange={handChecked}
+            checked={checked}
+            uncheckedIcon={false}
+            className="switch"
+            checkedIcon={false}
+            offColor="#6c757d"
+            onColor="#f05454"
+            activeBoxShadow="#f05454"
+          />
           <span className="text-muted">Monthly</span>
         </div>
 
         <div className="bottom_note_container text-muted">
-          <span>Replay your already saved games.  <span className="color-red">any link inside here</span><br />
-          Available on Lazksport site as part your subscription <br />
-          Plan subscrition must be associated with your resident country, you are in, at the time of subscription
+          <span>
+            Replay your already saved games.{" "}
+            <span className="color-red">any link inside here</span>
+            <br />
+            Available on Lazksport site as part your subscription <br />
+            Plan subscrition must be associated with your resident country, you
+            are in, at the time of subscription
           </span>
         </div>
-      </div>    
-      </>
+      </div>
+    </>
   );
 }

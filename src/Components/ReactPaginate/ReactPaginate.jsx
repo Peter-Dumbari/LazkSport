@@ -20,7 +20,7 @@ import "../ReactPaginate/ReactPaginate.scss";
 //   );
 // }
 
-export function PaginatedItems({ itemsPerPage, items }) {
+export function PaginatedItems({ itemsPerPage, items, loading }) {
 
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -40,12 +40,12 @@ export function PaginatedItems({ itemsPerPage, items }) {
   return (
     <>
       {/* <Items currentItems={currentItems} /> */}
-      <LeaguesCard currentItems={currentItems}/>
+      <LeaguesCard currentItems={currentItems} loading={loading}/>
       <ReactPaginate
         breakLabel="..."
         nextLabel="Next"
         onPageChange={handlePageClick}
-        // pageRangeDisplayed={5}
+        pageRangeDisplayed={5}
         pageCount={pageCount}
         previousLabel="Back"
         renderOnZeroPageCount={null}

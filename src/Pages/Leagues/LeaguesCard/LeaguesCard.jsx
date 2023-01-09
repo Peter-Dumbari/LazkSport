@@ -1,14 +1,15 @@
 import React from "react";
 import "../LeaguesCard/LeaguesCard.scss";
+import Loader from "../../../Components/OpeningLoader/Loader";
 
-export default function LeaguesCard({currentItems}) {
+export default function LeaguesCard({currentItems, loading}) {
   return (
     <div className="container">
       <h1 className="text-center">Popular Leagues Played Across the Globe</h1>
       <div className="row-container">
-        {currentItems && currentItems.map((items,index)=>
+        { loading? <Loader/> : currentItems && currentItems.map((items,index)=>
          <div className="column" key={index}>
-         <div className="card">
+         <div className="card cardie">
            <div className="card-header">
              <div className="d-inline-flex">
                <h6>{items.name}</h6>

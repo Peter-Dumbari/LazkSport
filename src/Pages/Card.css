@@ -187,9 +187,16 @@
 }
 
 .color-red{
-    color: rgb(240, 84, 84);
+    color: #f05454;
     cursor: pointer;
 }
+
+.switch{
+  background-color: red !important;
+  margin: 0 1rem 0 1rem;
+}
+
+
 @font-face {
   font-family: AngillaTattooPersonalUse-9pz5;
   src: local("AngillaTattooPersonalUse-9pz5"),
