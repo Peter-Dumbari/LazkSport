@@ -11,9 +11,12 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
   sendEmailVerification,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_2nrAde-TmZNX6B3Lidilds8JeCjfg-I",
@@ -33,7 +36,9 @@ const auth = getAuth(app);
 export const db = getFirestore();
 
 export function signup(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
+  setPersistence(auth, browserSessionPersistence).then(() => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  });
 }
 
 export function SendVerification() {
@@ -41,7 +46,10 @@ export function SendVerification() {
 }
 
 export function login(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
+  let log = setPersistence(auth, browserSessionPersistence).then(() => {
+    return signInWithEmailAndPassword(auth, email, password);
+  });
+  return log;
 }
 export function logout() {
   return signOut(auth);
@@ -61,7 +69,10 @@ export function useAuth() {
 const googleprovider = new GoogleAuthProvider();
 
 export function signInWithGoogle() {
-  return signInWithPopup(auth, googleprovider);
+  let google = setPersistence(auth, browserSessionPersistence).then(() => {
+    return signInWithPopup(auth, googleprovider);
+  });
+  return google;
 }
 
 const facebookprovider = new FacebookAuthProvider();

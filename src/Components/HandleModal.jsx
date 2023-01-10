@@ -23,11 +23,12 @@ function HandleModal() {
         if (res.operationType === "signIn") {
           navigate("/home");
           setIsLoading(false)
+          console.log(res.operationType)
         }
-        console.log(res);
       })
       .catch((FirebaseError) => {
         alert(FirebaseError);
+        console.warn(FirebaseError)
         setIsLoading(false)
       });
   };

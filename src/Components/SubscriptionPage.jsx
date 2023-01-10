@@ -16,7 +16,7 @@ import Image from "../images/global.png";
 import Footer from "./Footer";
 import HandleModal from "../Components/HandleModal";
 import { Link } from "react-router-dom";
-import $ from "jquery";
+import $, { get } from "jquery";
 import News from "../Pages/News/News";
 import Aboutus from "../Pages/Aboutus/Aboutus";
 import Counters from "../Pages/Counters/Counters";
@@ -26,6 +26,7 @@ import logo from "../images/newlogo.png";
 import "../Components/OpeningNav/Openingnav.css";
 import { useNavigate } from "react-router-dom";
 
+
 export default function SubscriptionPage() {
   const navigate = useNavigate();
   const customer_rep = collection(db, "Customer_Cares");
@@ -33,12 +34,13 @@ export default function SubscriptionPage() {
 
   
 
-  const HandleGoogle = async () => {
-    await signInWithGoogle().then((res) => {
+  function HandleGoogle(){
+    signInWithGoogle()
+    .then((res) => {
       if (res.operationType === "signIn") {
+        window.sessionStorage.setItem("ProfilePicture", res.user.photoURL);
+        window.sessionStorage.setItem('UsersName', res.user.displayName);
         navigate("/home");
-        window.localStorage.setItem("ProfilePicture", res.user.photoURL);
-        window.localStorage.setItem('UsersName', res.user.displayName);
       }
     })
     .catch((err) => {
@@ -50,8 +52,8 @@ export default function SubscriptionPage() {
     signInWithFacebook()
       .then((res) => {
         if (res.operationType === "signIn") {
-          window.localStorage.setItem("ProfilePicture", res.user.photoURL);
-          window.localStorage.setItem('UsersName', res.user.displayName);
+          window.sessionStorage.setItem("ProfilePicture", res.user.photoURL);
+          window.sessionStorage.setItem('UsersName', res.user.displayName);
           navigate("/home");
         }
         console.log(res);

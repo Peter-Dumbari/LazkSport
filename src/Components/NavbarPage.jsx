@@ -19,7 +19,7 @@ export default function NavbarPage({profilePicture, usersName}) {
   const HandleLogout = async() =>{
       await logout()
       navigate('/')
-      window.localStorage.clear();
+      window.sessionStorage.clear();
   } 
   return (
     <>
