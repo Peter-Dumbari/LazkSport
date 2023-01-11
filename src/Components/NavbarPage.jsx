@@ -1,26 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { logout, useAuth, SendVerification } from "../firebase-configuration";
-import image from "../../src/images/newlogo.png"
-import { Profiler } from "react";
+import image from "../../src/images/newlogo.png";
 import { useNavigate } from "react-router-dom";
 
-
-
-
-export default function NavbarPage({profilePicture, usersName}) {
+export default function NavbarPage() {
   const navigate = useNavigate();
   const currentUser = useAuth();
+  const [show, setShow] = useState(false);
+  const [midShow, setMidShow] = useState(false);
+  const [pics, setPics]=useState()
+  const [nam, setNam]=useState()
+
+  const profilePicture = sessionStorage.getItem("photo")
+  const usersName = sessionStorage.getItem("name")
   
-  const HandleLogout = async() =>{
-      await logout()
-      navigate('/')
-      window.sessionStorage.clear();
-  } 
+  const showDropdown = (e) => {
+    setShow(!show);
+  };
+  const hideDropdown = (e) => {
+    setShow(false);
+  };
+
+  const showMidDropdown = (e) => {
+    setMidShow(!midShow);
+  };
+  const hideMidDropdown = (e) => {
+    setMidShow(false);
+  };
+
+  const HandleLogout = async () => {
+    await logout();
+    navigate("/");
+    window.sessionStorage.clear();
+  };
+
+  const handleVerification = async () => {
+    await SendVerification().then(
+      alert("An Email have being sent to your email")
+    );
+  };
   return (
     <>
       <Navbar
@@ -29,12 +52,11 @@ export default function NavbarPage({profilePicture, usersName}) {
         bg="black"
         variant="dark"
         fixed="top"
-        sticky="top"
-      >
+        sticky="top">
         <Container>
           <Navbar.Brand>
             <Link to="/home">
-              <img src={image} width="150px"/>
+              <img src={image} width="150px" />
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -46,8 +68,7 @@ export default function NavbarPage({profilePicture, usersName}) {
                   style={{
                     textDecoration: "none",
                     color: "white",
-                  }}
-                >
+                  }}>
                   Features
                 </Link>
               </Nav.Link>
@@ -57,17 +78,20 @@ export default function NavbarPage({profilePicture, usersName}) {
                   style={{
                     textDecoration: "none",
                     color: "white",
-                  }}
-                >
+                  }}>
                   Live Scores
                 </Link>
               </Nav.Link>
-              <NavDropdown title="Games" id="collasible-nav-dropdown">
+              <NavDropdown
+                show={midShow}
+                onMouseEnter={showMidDropdown}
+                onMouseLeave={hideMidDropdown}
+                title="Games"
+                id="collasible-nav-dropdown">
                 <NavDropdown.Item>
                   <Link
                     to="/leagues"
-                    style={{ textDecoration: "none", color: "#000" }}
-                  >
+                    style={{ textDecoration: "none", color: "#000" }}>
                     Soccer Leagues
                   </Link>
                 </NavDropdown.Item>
@@ -84,21 +108,27 @@ export default function NavbarPage({profilePicture, usersName}) {
               </NavDropdown>
             </Nav>
             <Navbar.Text>
-                <span style={{color:"white"}}>{usersName}</span>
-              </Navbar.Text>
+              <span style={{ color: "white" }}>{usersName}</span>
+            </Navbar.Text>
             <Nav>
-              <Nav.Link >
-              <NavDropdown title={<img src={profilePicture || "https://th.bing.com/th/id/R.038417aec86fa504245a5410d28f350d?rik=68XYvXieCku0Og&riu=http%3a%2f%2fwww.atlantissportsclubs.com%2fwp-content%2fuploads%2f2016%2f09%2fBoyPlaceholder-01.png&ehk=pXeHbc8%2b3olVkHE8agQbUvW3OH5hLY1u5JtOgkMCM%2bA%3d&risl=&pid=ImgRaw&r=0"} className="profilepix"/>}  id="collasible-nav-dropdown" className="d-flex">
-                <NavDropdown.Item >
-                <span onClick={SendVerification}>Update Account</span>                
-                </NavDropdown.Item>
-                <NavDropdown.Item >
-                  <span onClick={HandleLogout}>Logout</span>                
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link>
+                <NavDropdown
+                  id="collasible-nav-dropdown"
+                  show={show}
+                  onMouseEnter={showDropdown}
+                  onMouseLeave={hideDropdown}
+                  title={<img src={profilePicture} className="profilepix" />}
+                  className="d-flex">
+                  <NavDropdown.Item>
+                    <span onClick={handleVerification}>Update Account</span>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <span onClick={HandleLogout}>Logout</span>
+                  </NavDropdown.Item>
+                </NavDropdown>
               </Nav.Link>
             </Nav>
-        </Navbar.Collapse>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>

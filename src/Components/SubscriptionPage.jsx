@@ -10,6 +10,7 @@ import {
   useAuth,
   signInWithGoogle,
   signInWithFacebook,
+  SendVerification,
 } from "../firebase-configuration";
 import Loader from "../Loaders/Loader";
 import Image from "../images/global.png";
@@ -27,10 +28,11 @@ import "../Components/OpeningNav/Openingnav.css";
 import { useNavigate } from "react-router-dom";
 
 
-export default function SubscriptionPage() {
+export default function SubscriptionPage({setProfilePic,setUsersName}) {
   const navigate = useNavigate();
   const customer_rep = collection(db, "Customer_Cares");
   const [customerRep, setCustomerRep] = useState([]);
+  
 
   
 
@@ -38,9 +40,15 @@ export default function SubscriptionPage() {
     signInWithGoogle()
     .then((res) => {
       if (res.operationType === "signIn") {
-        window.sessionStorage.setItem("ProfilePicture", res.user.photoURL);
-        window.sessionStorage.setItem('UsersName', res.user.displayName);
+        sessionStorage.setItem("photo",res.user.photoURL);
+        sessionStorage.setItem("name", res.user.displayName);
         navigate("/home");
+        console.log(res)
+        setProfilePic(sessionStorage.getItem("photo"))
+        setUsersName(sessionStorage.getItem("name"))
+      }
+      if(res.user.emailVerified === true){
+        SendVerification()
       }
     })
     .catch((err) => {
@@ -309,7 +317,7 @@ export default function SubscriptionPage() {
                   <span>Google Account</span>
                 </div>
               </div>
-              <HandleModal />
+              <HandleModal setProfilePic={setProfilePic} setUsersName={setUsersName}/>
             </div>
           </div>
         </div>

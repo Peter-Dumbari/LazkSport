@@ -10,14 +10,9 @@ import Fullnews from "./Pages/FullNews/Fullnews";
 import Livescore from "./Pages/LivescorePage/Livescore";
 
 export default function App() {
-  const [usersName, setUsersName] = useState("");
-  const [profilePic, setProfilePic] = useState("");
+  const [usersName, setUsersName] = useState();
+  const [profilePic, setProfilePic] = useState();
   const CurrentUsers = useAuth();
-
-  useEffect(() => {
-    setUsersName(sessionStorage.getItem("UsersName"));
-    setProfilePic(sessionStorage.getItem("ProfilePicture"));
-  }, [profilePic, usersName]);
 
   return (
     <>
