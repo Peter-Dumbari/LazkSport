@@ -36,9 +36,10 @@ const auth = getAuth(app);
 export const db = getFirestore();
 
 export function signup(email, password) {
-  setPersistence(auth, browserSessionPersistence).then(() => {
+  let signProcess = setPersistence(auth, browserSessionPersistence).then(() => {
     return createUserWithEmailAndPassword(auth, email, password);
   });
+  return signProcess;
 }
 
 export function SendVerification() {
