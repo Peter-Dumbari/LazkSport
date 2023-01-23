@@ -128,6 +128,8 @@ export default function SubscriptionPage({setProfilePic,setUsersName}) {
           });
         }
         if (res.operationType === "signIn") {
+          window.sessionStorage.setItem("ProfilePicture", res.user.photoURL);
+          window.sessionStorage.setItem('UsersName', res.user.displayName);
           navigate("/home");
           setIsLoading(false);
         }
